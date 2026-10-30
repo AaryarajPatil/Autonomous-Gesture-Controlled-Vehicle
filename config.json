@@ -1,0 +1,77 @@
+{
+  "system": {
+    "name": "ASEP-2 Autonomous Vehicle",
+    "version": "1.0.0",
+    "simulation_mode": true
+  },
+  "arduino": {
+    "port": "COM3",
+    "baud_rate": 9600,
+    "timeout": 1.0,
+    "enabled": false
+  },
+  "camera": {
+    "device_id": 0,
+    "width": 640,
+    "height": 480,
+    "fps": 30,
+    "mock_fallback": true
+  },
+  "vision": {
+    "gesture_detection": {
+      "min_detection_confidence": 0.7,
+      "min_tracking_confidence": 0.5
+    },
+    "object_detection": {
+      "confidence_threshold": 0.5,
+      "nms_threshold": 0.4,
+      "model_cfg": "vision/models/yolov3.cfg",
+      "model_weights": "vision/models/yolov3.weights",
+      "classes_file": "vision/models/coco.names"
+    },
+    "lane_detection": {
+      "canny_low": 50,
+      "canny_high": 150,
+      "hough_threshold": 50,
+      "min_line_len": 100,
+      "max_line_gap": 50
+    }
+  },
+  "navigation": {
+    "safety_distance": 1.0,
+    "max_speed": 1.0,
+    "map_resolution": 0.1,
+    "map_size": [100, 100],
+    "collision_threshold": 1.0
+  },
+  "terrain": {
+    "default_type": "flat",
+    "speed_profiles": {
+      "flat": {
+        "max_speed": 1.0,
+        "acceleration": 0.5,
+        "deceleration": 0.5
+      },
+      "smooth": {
+        "max_speed": 0.8,
+        "acceleration": 0.4,
+        "deceleration": 0.4
+      },
+      "rough": {
+        "max_speed": 0.5,
+        "acceleration": 0.3,
+        "deceleration": 0.3
+      },
+      "steep": {
+        "max_speed": 0.3,
+        "acceleration": 0.2,
+        "deceleration": 0.2
+      }
+    }
+  },
+  "logging": {
+    "log_dir": "logs",
+    "log_level": "INFO",
+    "save_interval_sec": 5.0
+  }
+}
